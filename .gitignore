@@ -1,0 +1,11 @@
+
+*.exe
+*.obj
+*.[oa]
+bin/
+obj/
+Debug/
+Release/
+*.user
+*.depend
+*.layout
