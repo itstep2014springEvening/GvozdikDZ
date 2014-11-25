@@ -5,7 +5,9 @@ using namespace std;
 
 int main()
 {
-    Vector a(2, 7, -3.5), b(1, -4, 0);
+    Vector a(0, 0, 0), b(0, 0, 0);
+    a.input();
+    b.input();
     a.output();
     b.output();
     (a.sum(b)).output();

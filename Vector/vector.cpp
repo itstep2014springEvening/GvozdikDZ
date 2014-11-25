@@ -1,4 +1,4 @@
-#include "vector.h"
+﻿#include "vector.h"
 #include <iostream>
 
 using namespace std;
@@ -58,4 +58,13 @@ Vector Vector::geomProd(Vector &b)
 void Vector::output()
 {
     cout << x << "," << y << "," << z << endl;
+}
+
+void Vector::input()
+{
+    cout << "Введите координаты вектора:" << endl;
+    cin >> x;
+    cin >> y;
+    cin >> z;
+
 }

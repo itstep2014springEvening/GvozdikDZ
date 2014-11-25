@@ -11,6 +11,7 @@ public:
     double vectorProd(Vector &b);
     Vector geomProd(Vector &b);
     void output();
+    void input();
 private:
     double x, y, z;
 };
