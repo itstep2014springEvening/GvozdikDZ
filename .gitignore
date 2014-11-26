@@ -1,4 +1,3 @@
-
 *.exe
 *.obj
 *.[oa]
@@ -9,3 +8,7 @@ Release/
 *.user
 *.depend
 *.layout
+*.sdf
+*.sln
+*.vcxproj
+*.filters
