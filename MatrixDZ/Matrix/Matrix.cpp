@@ -159,7 +159,7 @@ Matrix Matrix::multiplication(const Matrix &b)const
 
 void Matrix::input()
 {
-	cout << "Enter matrix size:" << endl;
+	cout << "Enter matrix size: " << endl;
 	cin >> sizeRow;
 	cin >> sizeColumn;
 }
