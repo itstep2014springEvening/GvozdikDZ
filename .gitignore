@@ -12,3 +12,4 @@ Release/
 *.sln
 *.vcxproj
 *.filters
+*.suo
