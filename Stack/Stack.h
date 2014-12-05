@@ -1,11 +1,6 @@
 #pragma once
 
 typedef int Data;
-struct Node
-{
-	Data data;
-	Node *next;
-};
 
 class Stack
 {
