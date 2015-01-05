@@ -1,0 +1,16 @@
+git config --global user.email "feran@uvaga.by"
+git config --global user.name "FeRan147"
+git config --global push.default simple
+ssh-keygen -t rsa -C "feran@uvaga.by"
+clip < /c/Users/FeRan/.ssh/id_rsa.pub
+git init
+git add * 
+git commit -m "First commit" 
+git remote add origin git@github.com:itstep2014springEvening/GvozdikDZ.git
+git fetch
+git checkout master
+git branch previous_master
+git reset --hard origin/master
+git branch -u origin/master
+git pull
+git push
