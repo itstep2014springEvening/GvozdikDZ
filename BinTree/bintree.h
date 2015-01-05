@@ -13,9 +13,9 @@ public:
     BinTree &operator=(BinTree &&rhs); //Оператор переместительного присваивания
     ~BinTree(); //Деструктор
 
-    bool find(Data data) const;
-    void push(Data data);
-    void pop(Data data);
+    bool search(Data data) const;
+    void add(Data data);
+    void remove(Data data);
     void output() const;
 private:
     struct Node
@@ -27,6 +27,7 @@ private:
         ~Node();
     } *root;
     static void output(Node *node);
+    static Node *clone(Node *node);
 };
 
 #endif // BINTREE_H

@@ -15,14 +15,17 @@ int main()
     for (int i = 0; i < size; i++)
     {
         cin >> a;
-        tree.push(a);
+        tree.add(a);
     }
     tree.output();
-    if (tree.find(4))
+    if (tree.search(4))
         cout << "True" << endl;
     else
         cout << "False" << endl;
-    tree.pop(10);
+    tree.add(10);
+    tree.output();
+    cout << endl;
+    tree.remove(10);
     tree.output();
     return 0;
 }
