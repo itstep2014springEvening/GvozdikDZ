@@ -1,10 +1,3 @@
-*.exe
-*.obj
-*.[oa]
-bin/
-obj/
-Debug/
-Release/
 *.user
 *.depend
 *.layout
@@ -13,3 +6,14 @@ Release/
 *.vcxproj
 *.filters
 *.suo
+*.exe
+*.obj
+*.[oa]
+bin/
+obj/
+Debug/
+Release/
+debug/
+release/
+Makefile
+Makefile.*
