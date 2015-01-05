@@ -1,7 +1,13 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef POLISHSTACK_H
+#define POLISHSTACK_H
 
-typedef int Data;
+struct DAC
+{
+    double x;
+    char operation;
+    bool isDouble;
+};
+typedef DAC Data;
 
 class Stack
 {
@@ -27,4 +33,5 @@ private:
     } *top;
     static Node *copy(const Node *otherTop);
 };
-#endif // STACK_H
+
+#endif // POLISHSTACK_H

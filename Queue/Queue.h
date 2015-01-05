@@ -1,35 +1,38 @@
-#pragma once
+#ifndef QUEUE_H
+#define QUEUE_H
 
 typedef int Data;
 
 class Queue
 {
 public:
-	Queue(); //Конструктор
-	Queue(const Queue &original); //Конструктор копирования
-	Queue &operator=(const Queue &rhs);  //Оператор присваивания
-	Queue(Queue &&victim); //Конструктор перемещения
-	Queue &operator=(Queue &&rhs); //Оператор переместительного присваивания
-	~Queue(); //Деструктор
-	void push(Data data);
-	void pop();
-	Data first() const;
-	Data last() const;
-	bool isEmpty() const;
-	void clear();
+    Queue(); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    Queue(const Queue &original); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    Queue &operator=(const Queue &rhs);  //РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    Queue(Queue &&victim); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
+    Queue &operator=(Queue &&rhs); //РћРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµСЃС‚РёС‚РµР»СЊРЅРѕРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    ~Queue(); //Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+    void push(Data data);
+    void pop();
+    Data first() const;
+    Data last() const;
+    bool isEmpty() const;
+    void clear();
 private:
-	struct Node
-	{
-		Data data;
-		Node *next;
-		Node(Data data);
-		~Node();
-	};
-	struct queueStruct
-	{
-		int size;
-		Node *first;
-		Node *last;
-	} *queueNode;
-	static Node *copy(const Node *other);
+    struct Node
+    {
+        Data data;
+        Node *next;
+        Node(Data data);
+        ~Node();
+    };
+    struct queueStruct
+    {
+        int size;
+        Node *first;
+        Node *last;
+    } *queueNode;
+    static Node *copy(const Node *other);
 };
+
+#endif // QUEUE_H

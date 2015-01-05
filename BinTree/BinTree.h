@@ -1,29 +1,32 @@
-#pragma once
+#ifndef BINTREE_H
+#define BINTREE_H
 
 typedef int Data;
 
 class BinTree
 {
 public:
-	BinTree(); //Конструктор
-	BinTree(const BinTree &original); //Конструктор копирования
-	BinTree &operator=(const BinTree &rhs);  //Оператор присваивания
-	BinTree(BinTree &&victim); //Конструктор перемещения
-	BinTree &operator=(BinTree &&rhs); //Оператор переместительного присваивания
-	~BinTree(); //Деструктор
+    BinTree(); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    BinTree(const BinTree &original); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    BinTree &operator=(const BinTree &rhs);  //РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    BinTree(BinTree &&victim); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
+    BinTree &operator=(BinTree &&rhs); //РћРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµСЃС‚РёС‚РµР»СЊРЅРѕРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    ~BinTree(); //Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	bool find(Data data) const;
-	void push(Data data);
-	void pop(Data data);
-	void output() const;
+    bool find(Data data) const;
+    void push(Data data);
+    void pop(Data data);
+    void output() const;
 private:
-	struct Node
-	{
-		Data data;
-		Node *right;
-		Node *left;
-		Node(Data data);
-		~Node();
-	} *root;
-	static void output(Node *node);
+    struct Node
+    {
+        Data data;
+        Node *right;
+        Node *left;
+        Node(Data data);
+        ~Node();
+    } *root;
+    static void output(Node *node);
 };
+
+#endif // BINTREE_H

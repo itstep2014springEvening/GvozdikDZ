@@ -1,4 +1,4 @@
-#include "Queue.h"
+#include "queue.h"
 #include <iostream>
 #include <stdlib.h>
 #include <exception>
@@ -8,5 +8,5 @@ using namespace std;
 
 int main()
 {
-	return 0;
+    return 0;
 }

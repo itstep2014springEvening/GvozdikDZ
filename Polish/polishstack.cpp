@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "polishstack.h"
 #include <iostream>
 #include <utility>
 

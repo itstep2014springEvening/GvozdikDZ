@@ -1,69 +1,69 @@
-#include "Vector.h"
+#include "vector.h"
 #include <iostream>
-#include <utility>/*для 6 move и swap*/
+#include <utility>/*РґР»СЏ 6 move Рё swap*/
 
 using namespace std;
 
 /*Vector::Vector(int size)
 {
-	this->size = size;
-	array = new double[this->size];
-	for (int i = 0; i < this->size; i++)
-		array[i] = 0.0;
+    this->size = size;
+    array = new double[this->size];
+    for (int i = 0; i < this->size; i++)
+        array[i] = 0.0;
 }*/
 
-Vector::Vector(int size) : /*Список инициализации*/array(nullptr), size(size)
+Vector::Vector(int size) : /*РЎРїРёСЃРѕРє РёРЅРёС†РёР°Р»РёР·Р°С†РёРё*/array(nullptr), size(size)
 {
-	array = new double[this->size];
-	for (int i = 0; i < this->size; i++)
-		array[i] = 0.0;
+    array = new double[this->size];
+    for (int i = 0; i < this->size; i++)
+        array[i] = 0.0;
 }
 
 Vector::Vector(double *val, int size)
 {
-	this->size = size;
-	array = new double[this->size];
-	for (int i = 0; i < this->size; i++)
-		array[i] = val[i];
+    this->size = size;
+    array = new double[this->size];
+    for (int i = 0; i < this->size; i++)
+        array[i] = val[i];
 }
 
 Vector::~Vector()
 {
-	delete[] array;
+    delete[] array;
 }
 
-Vector::Vector(Vector &&other) :array(nullptr), size(0) //Конструктор перемещения 
+Vector::Vector(Vector &&other) :array(nullptr), size(0) //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
 {
-	swap(array, other.array);
-	swap(size, other.size);
+    swap(array, other.array);
+    swap(size, other.size);
 }
 
-Vector &Vector::operator=(Vector &&other) //оператор переместительного присваивания
+Vector &Vector::operator=(Vector &&other) //РѕРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµСЃС‚РёС‚РµР»СЊРЅРѕРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 {
-	swap(array, other.array);
-	swap(size, other.size);
-	return *this;
+    swap(array, other.array);
+    swap(size, other.size);
+    return *this;
 }
 
-Vector::Vector(const Vector &other) //Конструктор копирования
+Vector::Vector(const Vector &other) //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
-	size = other.size;
-	array = new double[size];
-	for (int i = 0; i < size; i++)
-		array[i] = other.array[i];
+    size = other.size;
+    array = new double[size];
+    for (int i = 0; i < size; i++)
+        array[i] = other.array[i];
 }
 
-Vector &Vector::operator=(const Vector &vector/*ссылка*/) //Оператор присваивания
+Vector &Vector::operator=(const Vector &vector/*СЃСЃС‹Р»РєР°*/) //РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 {
-	if (this != &vector/*адрес*/)
-	{
-		delete[] array;
-		size = vector.size;
-		array = new double[size];
-		for (int i = 0; i < size; i++)
-			array[i] = vector.array[i];
-		return *this/*для реализации цепочек операторов присваивания*/;
-	}
+    if (this != &vector/*Р°РґСЂРµСЃ*/)
+    {
+        delete[] array;
+        size = vector.size;
+        array = new double[size];
+        for (int i = 0; i < size; i++)
+            array[i] = vector.array[i];
+        return *this/*РґР»СЏ СЂРµР°Р»РёР·Р°С†РёРё С†РµРїРѕС‡РµРє РѕРїРµСЂР°С‚РѕСЂРѕРІ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ*/;
+    }
 }
 
 
@@ -79,15 +79,15 @@ Vector Vector::operator-(const Vector &b)const
 
 double Vector::operator*(const Vector &b)const
 {
-	double result = 0.0;
-	for (int i = 0; i < size; ++i)
-		result += array[i] * b.array[i];
-	return result;
+    double result = 0.0;
+    for (int i = 0; i < size; ++i)
+        result += array[i] * b.array[i];
+    return result;
 }
 
 void Vector::output()const
 {
-	for (int i = 0; i < size; i++)
-		cout << array[i];
-	cout << endl;
+    for (int i = 0; i < size; i++)
+        cout << array[i];
+    cout << endl;
 }

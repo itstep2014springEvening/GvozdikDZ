@@ -1,19 +1,23 @@
-#pragma once
+#ifndef VECTOR_H
+#define VECTOR_H
+
 class Vector
 {
 public:
-	Vector(int size);
-	Vector(double *val, int size);
-	~Vector();
-	Vector(Vector &&other);
-	Vector(const Vector &other); //Конструктор копирования, может быть много.
-	Vector &operator=(Vector &&other);
-	Vector &operator=(const Vector &vector); //Оператор присваивания
-	Vector operator+(const Vector &b)const;
-	Vector operator-(const Vector &b)const;
-	double operator*(const Vector &b)const;
-	void output()const;
+    Vector(int size);
+    Vector(double *val, int size);
+    ~Vector();
+    Vector(Vector &&other);
+    Vector(const Vector &other); //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ, РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРЅРѕРіРѕ.
+    Vector &operator=(Vector &&other);
+    Vector &operator=(const Vector &vector); //РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    Vector operator+(const Vector &b)const;
+    Vector operator-(const Vector &b)const;
+    double operator*(const Vector &b)const;
+    void output()const;
 private:
-	double *array;
-	int size;
+    double *array;
+    int size;
 };
+
+#endif // VECTOR_H

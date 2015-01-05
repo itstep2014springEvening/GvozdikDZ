@@ -62,7 +62,7 @@ void Vector::output()
 
 void Vector::input()
 {
-    cout << "Введите координаты вектора:" << endl;
+    cout << "Enter vector:" << endl;
     cin >> x;
     cin >> y;
     cin >> z;

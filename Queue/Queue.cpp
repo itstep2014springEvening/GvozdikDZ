@@ -1,93 +1,93 @@
-#include "Queue.h"
+#include "queue.h"
 #include <iostream>
 #include <utility>
 
 using namespace std;
 
-Queue::Queue() : queueNode(nullptr) //Êîíñòðóêòîð
+Queue::Queue() : queueNode(nullptr) //ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
 {
 
 }
-Queue::Queue(const Queue &original) : queueNode(nullptr) //Êîíñòðóêòîð êîïèðîâàíèÿ
+Queue::Queue(const Queue &original) : queueNode(nullptr) //ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
 {
-	queueNode = copy(original.queueNode);
+    queueNode = copy(original.queueNode);
 }
-Queue &Queue::operator=(const Queue &rhs) //Îïåðàòîð êîïèðóþùåãî ïðèñâàèâàíèÿ
+Queue &Queue::operator=(const Queue &rhs) //ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ð½Ð¸Ñ
 {
-	Queue temp(rhs);
-	swap(*this, temp);
-	return *this;
+    Queue temp(rhs);
+    swap(*this, temp);
+    return *this;
 }
-Queue::Queue(Queue &&victim) : queueNode(nullptr) //Êîíñòðóêòîð ïåðåìåùåíèÿ
+Queue::Queue(Queue &&victim) : queueNode(nullptr) //ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ñ
 {
-	swap(queueNode, victim.queueNode);
+    swap(queueNode, victim.queueNode);
 }
-Queue &Queue::operator=(Queue &&rhs) //Îïåðàòîð ïåðåìåñòèòåëüíîãî ïðèñâàèâàíèÿ
+Queue &Queue::operator=(Queue &&rhs) //ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ð½Ð¸Ñ
 {
-	swap(*this, rhs);
-	return *this;
+    swap(*this, rhs);
+    return *this;
 }
-Queue::~Queue() //Äåñòðóêòîð
+Queue::~Queue() //Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
 {
-	clear();
+    clear();
 }
-Queue::Node *Queue::copy(const Queue::Node *original/*Óêàçàòåëü*/) //Ôóíêöèÿ
+Queue::Node *Queue::copy(const Queue::Node *original/*Ð£ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ*/) //Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ
 {
-	Node *newTop = nullptr;
-	Node *p = nullptr;
-	const Node *q = original;
-	p = new Node(q->data);
-	newTop = p;
-	q = q->next;
-	while (q != nullptr)
-	{
-		Node *r = nullptr;
-		r = new Node(q->data);
-		p->next = r;
-		p = p->next;
-		q = q->next;
-	}
-	return newTop;
+    Node *newTop = nullptr;
+    Node *p = nullptr;
+    const Node *q = original;
+    p = new Node(q->data);
+    newTop = p;
+    q = q->next;
+    while (q != nullptr)
+    {
+        Node *r = nullptr;
+        r = new Node(q->data);
+        p->next = r;
+        p = p->next;
+        q = q->next;
+    }
+    return newTop;
 }
 void Queue::push(Data data)
 {
-	Node *p = nullptr;
-	p = new Node(data);
-	queueNode->last = p->next;
-	queueNode->last = p;
-	queueNode->size++;
+    Node *p = nullptr;
+    p = new Node(data);
+    queueNode->last = p->next;
+    queueNode->last = p;
+    queueNode->size++;
 }
 void Queue::pop()
 {
-	if (!isEmpty())
-	{
-		Node *p = queueNode->first;
-		p = queueNode->first->next;
-		delete p;
-	}
+    if (!isEmpty())
+    {
+        Node *p = queueNode->first;
+        p = queueNode->first->next;
+        delete p;
+    }
 }
 Data Queue::first() const
 {
-	if (isEmpty())
-		throw exception();
-	return queueNode->first->data;
+    if (isEmpty())
+        throw exception();
+    return queueNode->first->data;
 }
 Data Queue::last() const
 {
-	if (isEmpty())
-		throw exception();
-	return queueNode->last->data;
+    if (isEmpty())
+        throw exception();
+    return queueNode->last->data;
 }
 bool Queue::isEmpty()const
 {
-	return queueNode == nullptr;
+    return queueNode == nullptr;
 }
 void Queue::clear()
 {
-	while (!isEmpty())
-	{
-		Node *p = queueNode->first;
-		p = queueNode->first->next;
-		delete p;
-	}
+    while (!isEmpty())
+    {
+        Node *p = queueNode->first;
+        p = queueNode->first->next;
+        delete p;
+    }
 }

@@ -1,125 +1,125 @@
-#include "BinTree.h"
+#include "bintree.h"
 #include <iostream>
 #include <utility>
 
 using namespace std;
 
-BinTree::BinTree() : root(nullptr) //Êîíñòðóêòîð
+BinTree::BinTree() : root(nullptr) //ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
 {
 
 }
-BinTree::BinTree(const BinTree &original) : root(nullptr)//Êîíñòðóêòîð êîïèðîâàíèÿ
+BinTree::BinTree(const BinTree &original) : root(nullptr)//ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
 {
 
 }
-BinTree &BinTree::operator=(const BinTree &rhs) //Îïåðàòîð êîïèðóþùåãî ïðèñâàèâàíèÿ
+BinTree &BinTree::operator=(const BinTree &rhs) //ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ð½Ð¸Ñ
 {
-	BinTree temp(rhs);
-	swap(*this, temp);
-	return *this;
+    BinTree temp(rhs);
+    swap(*this, temp);
+    return *this;
 }
-BinTree::BinTree(BinTree &&victim) : root(nullptr)//Êîíñòðóêòîð ïåðåìåùåíèÿ
+BinTree::BinTree(BinTree &&victim) : root(nullptr)//ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ñ
 {
 
 }
-BinTree &BinTree::operator=(BinTree &&rhs) //Îïåðàòîð ïåðåìåñòèòåëüíîãî ïðèñâàèâàíèÿ
+BinTree &BinTree::operator=(BinTree &&rhs) //ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ð¿Ñ€Ð¸ÑÐ²Ð°Ð¸Ð²Ð°Ð½Ð¸Ñ
 {
-	swap(*this, rhs);
-	return *this;
+    swap(*this, rhs);
+    return *this;
 }
-BinTree::~BinTree() //Äåñòðóêòîð
+BinTree::~BinTree() //Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
 {
-	if (!root)
-	{
-		return;
-	}
-	else
-	{
-		pop(root->left->data);
-		pop(root->right->data);
-		delete root;
-		root = nullptr;
-	}
+    if (!root)
+    {
+        return;
+    }
+    else
+    {
+        pop(root->left->data);
+        pop(root->right->data);
+        delete root;
+        root = nullptr;
+    }
 }
 
 bool BinTree::find(Data data) const
 {
-	if (!root)
-	{
-		return false;
-	}
-	else
-	{
-		Node *q = root;
-		while (q)
-		{
-			if (data < q->data)
-				q = q->left;
-			else if (data > q->data)
-				q = q->right;
-			else
-				return true;
-		}
-	}
-	return false;
+    if (!root)
+    {
+        return false;
+    }
+    else
+    {
+        Node *q = root;
+        while (q)
+        {
+            if (data < q->data)
+                q = q->left;
+            else if (data > q->data)
+                q = q->right;
+            else
+                return true;
+        }
+    }
+    return false;
 }
 void BinTree::push(Data data)
 {
-	if (!root)
-	{
-		root = new Node(data);
-	}
-	else
-	{
-		Node *q = root, *p = nullptr;
-		while (q)
-		{
-			p = q;
-			if (data < q->data)
-				q = q->left;
-			else if (data > q->data)
-				q = q->right;
-			else
-				return;
-		}
-		q = new Node(data);
-		if (q->data < p->data)
-			p->left = q;
-		else
-			p->right = q;
-	}
+    if (!root)
+    {
+        root = new Node(data);
+    }
+    else
+    {
+        Node *q = root, *p = nullptr;
+        while (q)
+        {
+            p = q;
+            if (data < q->data)
+                q = q->left;
+            else if (data > q->data)
+                q = q->right;
+            else
+                return;
+        }
+        q = new Node(data);
+        if (q->data < p->data)
+            p->left = q;
+        else
+            p->right = q;
+    }
 }
 void BinTree::pop(Data data)
 {
-	if (!root)
-	{
-		return;
-	}
-	else
-	{
-		Node *q = root, *p = nullptr;
-		while (q)
-		{
-			if (data = q->data)
-			{
+    if (!root)
+    {
+        return;
+    }
+    else
+    {
+        Node *q = root, *p = nullptr;
+        while (q)
+        {
+            if (data = q->data)
+            {
 
-			}
-		}
-	}
+            }
+        }
+    }
 }
 void BinTree::output() const
 {
-	output(root);
+    output(root);
 }
 
 void BinTree::output(Node *node)
 {
-	if (node)
-	{
-		output(node->left);
-		cout << node->data << " ";
-		output(node->right);
-	}
+    if (node)
+    {
+        output(node->left);
+        cout << node->data << " ";
+        output(node->right);
+    }
 }
 
 
@@ -130,6 +130,6 @@ BinTree::Node::Node(Data data) : data(data), right(nullptr), left(nullptr)
 
 BinTree::Node::~Node()
 {
-	right = nullptr;
-	left = nullptr;
+    right = nullptr;
+    left = nullptr;
 }
