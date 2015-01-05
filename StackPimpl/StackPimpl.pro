@@ -1,0 +1,19 @@
+TEMPLATE = app
+CONFIG += console
+CONFIG -= app_bundle
+CONFIG -= qt
+CONFIG += c++11
+
+SOURCES += main.cpp \
+    stack.cpp \
+    implementation.cpp \
+    consolestack.cpp
+
+include(deployment.pri)
+qtcAddDeployment()
+
+HEADERS += \
+    stack.h \
+    implementation.h \
+    consolestack.h
+
