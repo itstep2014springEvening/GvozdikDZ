@@ -13,7 +13,6 @@ public:
     Implementation &operator =(Implementation &&other);
     ~Implementation();
 
-
     void push(Data data);
     void pop();
     Data onTop() const;
