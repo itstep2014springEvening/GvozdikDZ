@@ -7,32 +7,28 @@ class Queue
 {
 public:
     Queue(); //Конструктор
-    Queue(const Queue &original); //Конструктор копирования
+    Queue(const Queue &other); //Конструктор копирования
     Queue &operator=(const Queue &rhs);  //Оператор присваивания
     Queue(Queue &&victim); //Конструктор перемещения
     Queue &operator=(Queue &&rhs); //Оператор переместительного присваивания
     ~Queue(); //Деструктор
+
     void push(Data data);
     void pop();
-    Data first() const;
-    Data last() const;
+    Data inBegin() const;
+    Data inEnd() const;
     bool isEmpty() const;
     void clear();
+
+    void output() const;
 private:
     struct Node
     {
         Data data;
         Node *next;
-        Node(Data data);
-        ~Node();
-    };
-    struct queueStruct
-    {
-        int size;
-        Node *first;
-        Node *last;
-    } *queueNode;
-    static Node *copy(const Node *other);
+    } *head, *tail;
+    int size;
+    static Node *copy(const Node *node);
+    static void output(Node *node);
 };
-
 #endif // QUEUE_H
