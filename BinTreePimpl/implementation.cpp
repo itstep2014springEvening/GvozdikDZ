@@ -151,7 +151,7 @@ void BinTree::Implementation::remove(Data data)
 
 void BinTree::Implementation::getArrayRepresentation(Data *&array, int &size) const
 {
-    /*size = 0;
+    size = 0;
     Node *p = root;
     while(p)
     {
@@ -166,13 +166,13 @@ void BinTree::Implementation::getArrayRepresentation(Data *&array, int &size) co
         array[i] = p->data;
         --i;
         p = p->next;
-    }*/
+    }
 }
 
 bool BinTree::Implementation::getNext(Data &data, bool firstTime) const
 {
-    /*static Node *p;
-    Node *q = top;
+    static Node *p;
+    Node *q = root;
     bool result;
     if(firstTime)
     {
@@ -194,7 +194,7 @@ bool BinTree::Implementation::getNext(Data &data, bool firstTime) const
     }
     if(result)
         data = p->data;
-    return result;*/
+    return result;
 }
 
 void BinTree::Implementation::acceptVisitor(void (*visitor)(Data)) const
