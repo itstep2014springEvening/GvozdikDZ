@@ -6,15 +6,14 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     machine.cpp \
-    term.cpp \
     next.cpp \
     previous.cpp \
     inc.cpp \
     dec.cpp \
-    put.cpp \
-    get.cpp \
     open.cpp \
-    close.cpp
+    close.cpp \
+    write.cpp \
+    read.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -26,8 +25,8 @@ HEADERS += \
     previous.h \
     inc.h \
     dec.h \
-    put.h \
-    get.h \
     open.h \
-    close.h
+    close.h \
+    read.h \
+    write.h
 

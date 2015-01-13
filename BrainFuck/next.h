@@ -15,7 +15,7 @@ public:
     Next &operator=(Next &&rhs) = default;
     ~Next() = default;
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
 };
 
 #endif // NEXT_H

@@ -4,6 +4,7 @@ using namespace std;
 
 Close::Close(int neighbour) : neighbour(neighbour)
 {    
+
 }
 
 Close::~Close()
@@ -11,9 +12,9 @@ Close::~Close()
 
 }
 
-void Close::execute(Machine &machine, int &instruction) const
+void Close::execute(Machine &machine, unsigned int &instruction) const
 {
-    if(machine.get())
+    if(machine.read())
         instruction = neighbour;
     else
        ++instruction;

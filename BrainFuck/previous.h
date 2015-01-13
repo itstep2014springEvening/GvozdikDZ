@@ -15,7 +15,7 @@ public:
     Previous &operator=(Previous &&rhs) = default;
     ~Previous() = default;
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
 };
 
 #endif // PREVIOUS_H

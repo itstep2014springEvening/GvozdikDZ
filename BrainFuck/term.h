@@ -15,7 +15,7 @@ public:
     Term &operator=(Term &&rhs) = default;
     ~Term() = default;
 
-    virtual void execute(Machine &machine, int &instruction) const = 0;
+    virtual void execute(Machine &machine, unsigned int &instruction) const = 0;
 };
 
 #endif // TERM_H

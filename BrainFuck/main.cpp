@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "machine.h"
 #include "open.h"
@@ -7,8 +8,8 @@
 #include "dec.h"
 #include "next.h"
 #include "previous.h"
-#include "get.h"
-#include "put.h"
+#include "read.h"
+#include "write.h"
 
 #include <vector>
 #include <stack>
@@ -20,27 +21,51 @@ int main()
     vector<Term *> userProgramm;
     stack<int> userStack;
     int increment = 0;
-    while(f.eof())
+
+    ifstream f("input.txt");
+
+    while(!f.eof())
     {
         char c = f.get();
-        switch(c)
+        if(c!=' ' && c!='\n')
         {
-        case '-':
-            userProgramm.push_back(new Dec);
-            break;
-        case '[':
-            userProgramm.push_back(nullptr);
-            userStack.push(increment);
-            break;
-        case ']':
-            userProgramm.push_back(new Close(userStack.top()));
-            userProgramm[userStack.top] = new Open(increment);
-            userStack.pop();
-            break;
+            cout.put(c);
+            switch(c)
+            {
+            case '+':
+               userProgramm.push_back(new Inc);
+               break;
+            case '-':
+               userProgramm.push_back(new Dec);
+              break;
+            case '.':
+              userProgramm.push_back(new Read);
+              break;
+            case ',':
+                userProgramm.push_back(new Write);
+                break;
+            case '>':
+                userProgramm.push_back(new Next);
+                break;
+            case '<':
+                userProgramm.push_back(new Previous);
+                break;
+            case '[':
+                userProgramm.push_back(nullptr);
+                userStack.push(increment);
+                break;
+            case ']':
+                userProgramm.push_back(new Close(userStack.top()));
+                userProgramm[userStack.top()] = new Open(increment);
+                userStack.pop();
+                break;
+            }
+            ++increment;
         }
     }
     Machine machine;
-    for(int increment =0; increment < userProgramm.size(); )
+    cout<<endl;
+    for(unsigned int increment = 0; increment < userProgramm.size(); )
         userProgramm[increment]->execute(machine, increment);
     return 0;
 }

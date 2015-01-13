@@ -8,14 +8,16 @@ using namespace std;
 class Open: public Term
 {
 public:
-    Open();
+    Open(int neighbour);
     Open(const Open &original) = default;
     Open &operator=(const Open &rhs) = default;
     Open(Open &&victim) = default;
     Open &operator=(Open &&rhs) = default;
     ~Open();
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
+private:
+    int neighbour;
 };
 
 #endif // OPEN_H

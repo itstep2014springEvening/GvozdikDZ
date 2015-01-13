@@ -15,12 +15,12 @@ Machine::~Machine()
 
 void Machine::inc()
 {
-    array[head]++;
+    ++array[head];
 }
 
 void Machine::dec()
 {
-    array[head]--;
+    --array[head];
 }
 
 void Machine::shl()
@@ -33,13 +33,13 @@ void Machine::shr()
     head++;
 }
 
-void Machine::set(char c)
+void Machine::read(char c)
 {
-    putchar(arr[head]) = c;
+    array[head] = c;
 }
 
-char Machine::get() const
+char Machine::write() const
 {
-    arr[head] = getchar();
+   return array[head];
 }
 

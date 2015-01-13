@@ -15,7 +15,7 @@ public:
     Inc &operator=(Inc &&rhs) = default;
     ~Inc() = default;
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
 };
 
 #endif // INC_H

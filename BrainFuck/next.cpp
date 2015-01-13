@@ -2,17 +2,7 @@
 
 using namespace std;
 
-Next::Next()
-{
-
-}
-
-Next::~Next()
-{
-
-}
-
-void Next::execute(Machine &machine, int &instruction) const
+void Next::execute(Machine &machine, unsigned int &instruction) const
 {
     machine.shr();
     ++instruction;

@@ -2,17 +2,7 @@
 
 using namespace std;
 
-Dec::Dec()
-{
-
-}
-
-Dec::~Dec()
-{
-
-}
-
-void Dec::execute(Machine &machine, int &instruction) const
+void Dec::execute(Machine &machine, unsigned int &instruction) const
 {
     machine.dec();
     ++instruction;

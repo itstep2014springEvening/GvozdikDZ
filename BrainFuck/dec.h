@@ -15,7 +15,7 @@ public:
     Dec &operator=(Dec &&rhs) = default;
     ~Dec() = default;
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
 };
 
 #endif // DEC_H

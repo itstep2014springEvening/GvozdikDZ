@@ -15,7 +15,7 @@ public:
     Close &operator=(Close &&rhs);
     ~Close();
 
-    void execute(Machine &machine, int &instruction) const override;
+    void execute(Machine &machine, unsigned int &instruction) const override;
 private:
     int neighbour;
 };
