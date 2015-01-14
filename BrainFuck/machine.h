@@ -17,8 +17,8 @@ public:
     void dec();
     void shl();
     void shr();
-    void read(char c);
-    char write() const;
+    void write(char c);
+    char read() const;
 private:
     char array[30000];
     int head;

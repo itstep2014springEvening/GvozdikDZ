@@ -33,12 +33,12 @@ void Machine::shr()
     head++;
 }
 
-void Machine::read(char c)
+void Machine::write(char c)
 {
     array[head] = c;
 }
 
-char Machine::write() const
+char Machine::read() const
 {
    return array[head];
 }
