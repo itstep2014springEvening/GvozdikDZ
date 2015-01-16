@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\machine.o
+./release\next.o
+./release\previous.o
+./release\inc.o
+./release\dec.o
+./release\open.o
+./release\close.o
+./release\write.o
+./release\read.o
+);

@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\machine.o
+./debug\next.o
+./debug\previous.o
+./debug\inc.o
+./debug\dec.o
+./debug\open.o
+./debug\close.o
+./debug\write.o
+./debug\read.o
+);

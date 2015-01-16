@@ -67,6 +67,9 @@ int main()
     cout<<endl;
     for(unsigned int increment = 0; increment < userProgramm.size(); )
         userProgramm[increment]->execute(machine, increment);
+
+    for(unsigned int increment = 0; increment < userProgramm.size(); )
+        delete userProgramm[increment];
     return 0;
 }
 
