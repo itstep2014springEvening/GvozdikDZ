@@ -5,9 +5,12 @@ template <typename T>
 class Iterator final
 {
 public:
-    Iterator();
-    ~Iterator();
-    //GVI
+    Iterator(); //Конструктор
+    Iterator(const Iterator<T> &other); //Конструктор копирования
+    Iterator &operator=(const Iterator<T> &rhs);  //Оператор присваивания
+    Iterator(Iterator<T> &&victim); //Конструктор перемещения
+    Iterator &operator=(Iterator<T> &&rhs); //Оператор переместительного присваивания
+    ~Iterator(); //Деструктор
 
     friend class List<T>;
     T &operator*() const;

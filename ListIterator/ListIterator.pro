@@ -12,5 +12,6 @@ qtcAddDeployment()
 
 HEADERS += \
     list.h \
-    iterator.h
+    iterator.h \
+    exception.h
 
