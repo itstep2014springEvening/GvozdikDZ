@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    list.cpp \
     iterator.cpp
 
 include(deployment.pri)
