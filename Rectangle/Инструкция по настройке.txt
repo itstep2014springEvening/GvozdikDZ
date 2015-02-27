@@ -1,0 +1,5 @@
+1. Установить .Net Framework 2 (в 8 и выше Панель управления\Удаление программы\Включение или отключение компонентов Windows поставить галочку .Net Framework 3.5 и согласиться на скачивание.
+2. Установить taoframework-2.1.0-setup.exe (лежит в папке).
+3. После установки скопировать файл freeglut.dll из папки C:\Program Files (x86)\TaoFramework\lib в папку C:\Windows
+4. Действовать по инструкции http://esate.ru/uroki/OpenGL/uroki-OpenGL-c-sharp/initsializatsiya-opengl-v-c-sharp/ 
+до зоголовка Инициализация OpenGL в C# .NET.
