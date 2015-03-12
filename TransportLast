@@ -1,0 +1,160 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Events
+{
+    abstract class Event
+    {
+        public readonly uint time;
+        public Event(uint time)
+        {
+            this.time = time;
+        }
+        public virtual void process() { }
+    }
+
+    class NewPassangerEvent : Event
+    {
+        public readonly Stop where;
+        public NewPassangerEvent(uint time, Stop where)
+            : base(time)
+        {
+            this.where = where;
+        }
+
+        public override void process()
+        {
+            Console.WriteLine("{0}: New passanger at {1}", Program.time, where.name);
+            new Passanger(where);
+        }
+    }
+
+    class BusArrivalEvent : Event
+    {
+        Bus bus;
+        public BusArrivalEvent(uint time, Bus bus):
+            base(time)
+        {
+            this.bus = bus;
+        }
+        public override void process()
+        {
+            bus.next();
+
+            Console.WriteLine("{0}: A Bus arrived to the  {1}", Program.time, bus.where.name);
+            
+
+            
+
+            Program.events.Add(new BusArrivalEvent(time + 7, bus));
+
+        }
+    }
+    class Stop
+    {
+        public List<Passanger> passangers;
+        public readonly uint timeToNext;
+        public readonly uint passangerInterval;
+        public readonly string name;
+        public Stop(string name, uint timeToNext, uint passangerInterval)
+        {
+            this.name = name;
+            this.timeToNext = timeToNext;
+            this.passangerInterval = passangerInterval;
+            this.passangers = new List<Passanger>();
+        }
+    }
+    class Bus
+    {
+        public List<Stop>.Enumerator stopEnumerator;
+        const uint capacity = 18;
+        List<Passanger> passanger = new List<Passanger>((int)capacity);  
+        public Stop where
+        {
+            get
+            {
+                return stopEnumerator.Current;
+            }
+        }
+        public Bus()
+        {
+
+            this.stopEnumerator = Program.stops.GetEnumerator();
+            Program.events.Add(new BusArrivalEvent(1, this));
+        }
+        public void next()
+        {
+            if(stopEnumerator.MoveNext() == false)
+            {
+                stopEnumerator = Program.stops.GetEnumerator();
+                stopEnumerator.MoveNext();
+            }
+        }
+
+        public void boarding(Stop stop)
+        {
+            while(stop.passangers)
+        }
+    }
+    class Passanger
+    {
+        readonly uint arrival;
+        readonly Stop stop;
+        public Passanger(Stop stop)
+        {
+            this.stop = stop;
+            this.stop.passangers.Add(this);
+
+            arrival = Program.time;
+            uint nextArrival = Program.time + 3;
+            Program.events.Add(new NewPassangerEvent(nextArrival, stop));
+        }
+    }
+
+    class Program
+    {
+        public static uint time;
+        public static List<Event> events;
+        public static List<Stop> stops;
+        static void Main(string[] args)
+        {
+            time = 0;
+            stops = new List<Stop>(){
+                    new Stop("Kastrychnickaja", 200, 3),
+                    new Stop("Niamiha", 180, 6),
+                    new Stop("Frunzenskaja", 190, 5),
+                    new Stop("Niamiha", 300, 6)
+            };
+
+            events = new List<Event>() {
+                     new NewPassangerEvent(1,stops[0]),
+                     new NewPassangerEvent(2,stops[1]),
+                     new NewPassangerEvent(3,stops[2]),
+                     new NewPassangerEvent(5,stops[3])
+            };
+            Bus bus = new Bus();
+
+            while (time < 50)
+            {
+                uint mintime = events[0].time;
+                Event upcomingEvent = events[0];
+                foreach (Event ev in events)
+                {
+                    if (ev.time < mintime)
+                    {
+                        mintime = ev.time;
+                        upcomingEvent = ev;
+                    }
+                }
+                time = upcomingEvent.time;
+                upcomingEvent.process();
+                events.Remove(upcomingEvent);
+
+            }
+
+        }
+    }
+}
