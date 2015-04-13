@@ -1,0 +1,6 @@
+cd /d/путь к твоей папке
+git status - поверить
+git add --all - добавить всё
+git commit -m "dz" - commit
+git push - отправляем на хранилище
+git pull - получаем
