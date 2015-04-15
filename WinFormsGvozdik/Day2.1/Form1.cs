@@ -13,11 +13,6 @@ namespace Day2_1
     {
         List<Gasoline> gasoline;
         List<Kafe> kafe;
-        CheckCalc cb1 = new CheckCalc();
-        CheckCalc cb2 = new CheckCalc();
-        CheckCalc cb3 = new CheckCalc();
-        CheckCalc cb4 = new CheckCalc();
-        CheckCalc cb5 = new CheckCalc();
 
         public Form1()
         {
@@ -81,13 +76,29 @@ namespace Day2_1
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            textBox14.Text = textBox3.Text = Convert.ToString(Convert.ToDouble(textBox2.Text) * Convert.ToDouble(gasoline[comboBox1.SelectedIndex].Price));
+            if (textBox2.Text != "" && textBox3.Text != "")
+            {
+                textBox14.Text = textBox3.Text = Convert.ToString(Convert.ToDouble(textBox2.Text) * Convert.ToDouble(gasoline[comboBox1.SelectedIndex].Price));
+            }
+            else
+            {
+                textBox2.Text = "0";
+                textBox3.Text = "0";
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            textBox14.Text = textBox3.Text;
-            textBox2.Text = Convert.ToString(Convert.ToDouble(textBox3.Text) / Convert.ToDouble(gasoline[comboBox1.SelectedIndex].Price));
+            if (textBox2.Text != "" && textBox3.Text != "")
+            {
+                textBox14.Text = textBox3.Text;
+                textBox2.Text = Convert.ToString(Convert.ToDouble(textBox3.Text) / Convert.ToDouble(gasoline[comboBox1.SelectedIndex].Price));
+            }
+            else
+            {
+                textBox2.Text = "0";
+                textBox3.Text = "0";
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -95,13 +106,13 @@ namespace Day2_1
             if (checkBox1.Checked)
             {
                 textBox9.ReadOnly = false;
-                textBox15.Text = cb1.Sum(textBox15.Text, textBox4.Text);
             }
             else
             {
                 textBox9.ReadOnly = true;
-                textBox15.Text = cb1.Sub(textBox15.Text, textBox4.Text);
             }
+            CafeCalc();
+
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -109,13 +120,12 @@ namespace Day2_1
             if (checkBox2.Checked)
             {
                 textBox10.ReadOnly = false;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) + Convert.ToDouble(textBox5.Text) * Convert.ToDouble(textBox10.Text));
             }
             else
             {
                 textBox10.ReadOnly = true;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) - Convert.ToDouble(textBox5.Text) * Convert.ToDouble(textBox10.Text));
             }
+            CafeCalc();
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -123,13 +133,12 @@ namespace Day2_1
             if (checkBox3.Checked)
             {
                 textBox11.ReadOnly = false;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) + Convert.ToDouble(textBox6.Text) * Convert.ToDouble(textBox11.Text));
             }
             else
             {
                 textBox11.ReadOnly = true;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) - Convert.ToDouble(textBox6.Text) * Convert.ToDouble(textBox11.Text));
             }
+            CafeCalc();
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
@@ -137,13 +146,12 @@ namespace Day2_1
             if (checkBox4.Checked)
             {
                 textBox12.ReadOnly = false;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) + Convert.ToDouble(textBox7.Text) * Convert.ToDouble(textBox12.Text));
             }
             else
             {
-                textBox12.ReadOnly = true;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) - Convert.ToDouble(textBox7.Text) * Convert.ToDouble(textBox12.Text));
+                textBox12.ReadOnly = true;;
             }
+            CafeCalc();
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
@@ -151,53 +159,72 @@ namespace Day2_1
             if (checkBox5.Checked)
             {
                 textBox13.ReadOnly = false;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) + Convert.ToDouble(textBox8.Text) * Convert.ToDouble(textBox13.Text));
             }
             else
             {
                 textBox13.ReadOnly = true;
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox15.Text) - Convert.ToDouble(textBox8.Text) * Convert.ToDouble(textBox13.Text));
             }
+            CafeCalc();
         }
 
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-            if (textBox15.Text != "" && textBox9.Text != "")
-            {
-                textBox15.Text = cb1.Sum(textBox15.Text, textBox4.Text);
-            }
+            CafeCalc();
         }
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
-            if (textBox15.Text != "" && textBox10.Text != "")
-            {
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox5.Text) * Convert.ToDouble(textBox10.Text));
-            }
+            CafeCalc();
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-            if (textBox15.Text != "" && textBox11.Text != "")
-            {
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox6.Text) * Convert.ToDouble(textBox11.Text));
-            }
+            CafeCalc();
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
         {
-            if (textBox15.Text != "" && textBox12.Text != "")
-            {
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox7.Text) * Convert.ToDouble(textBox12.Text));
-            }
+            CafeCalc();
         }
 
         private void textBox13_TextChanged(object sender, EventArgs e)
         {
-            if (textBox15.Text != "" && textBox13.Text != "")
+            CafeCalc();
+        }
+        private void CafeCalc()
+        {
+            double kafeCalcResult = 0;
+
+            List<TextBox> tbCheck = new List<TextBox>() { textBox9, textBox10, textBox11, textBox12, textBox13 };
+
+            for (int i = 0; i < tbCheck.Count; i++)
             {
-                textBox15.Text = Convert.ToString(Convert.ToDouble(textBox8.Text) * Convert.ToDouble(textBox13.Text));
+                if (tbCheck[i].Text == "")
+                    tbCheck[i].Text = "0";
             }
+
+            List<double> argSum = new List<double>() { checkBox1.Checked ? Convert.ToDouble(kafe[0].Price) * Convert.ToDouble(textBox9.Text) : 0, 
+                                                       checkBox2.Checked ? Convert.ToDouble(kafe[1].Price) * Convert.ToDouble(textBox10.Text) : 0,
+                                                       checkBox3.Checked ? Convert.ToDouble(kafe[2].Price) * Convert.ToDouble(textBox11.Text) : 0,
+                                                       checkBox4.Checked ? Convert.ToDouble(kafe[3].Price) * Convert.ToDouble(textBox12.Text) : 0,
+                                                       checkBox5.Checked ? Convert.ToDouble(kafe[4].Price) * Convert.ToDouble(textBox13.Text) : 0 };
+            for (int i = 0; i < argSum.Count; i++)
+            {
+                kafeCalcResult += argSum[i];
+            }
+            textBox15.Text = Convert.ToString(kafeCalcResult);
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox14.Text != "" && textBox15.Text != "")
+                textBox16.Text = Convert.ToString(Convert.ToDouble(textBox14.Text) + Convert.ToDouble(textBox15.Text));
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox14.Text != "" && textBox15.Text != "")
+                textBox16.Text = Convert.ToString(Convert.ToDouble(textBox14.Text) + Convert.ToDouble(textBox15.Text));
         }
     }
     class Gasoline
@@ -218,17 +245,6 @@ namespace Day2_1
         public override string ToString()
         {
             return String.Format("{0}", Price);
-        }
-    }
-    class CheckCalc
-    {
-        public string Sum(string first, string second)
-        {
-            return Convert.ToString(Convert.ToDouble(first) + Convert.ToDouble(second));
-        }
-        public string Sub(string first, string second)
-        {
-            return Convert.ToString(Convert.ToDouble(first) - Convert.ToDouble(second));
         }
     }
 }

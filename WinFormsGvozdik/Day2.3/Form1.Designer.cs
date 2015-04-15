@@ -40,7 +40,7 @@
             this.numGas = new System.Windows.Forms.NumericUpDown();
             this.numColdW = new System.Windows.Forms.NumericUpDown();
             this.numHotW = new System.Windows.Forms.NumericUpDown();
-            this.numElecricity = new System.Windows.Forms.NumericUpDown();
+            this.numElectricity = new System.Windows.Forms.NumericUpDown();
             this.numHeating = new System.Windows.Forms.NumericUpDown();
             this.cbHeating = new System.Windows.Forms.CheckBox();
             this.cbGas = new System.Windows.Forms.CheckBox();
@@ -62,7 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColdW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHotW)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numElecricity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numElectricity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHeating)).BeginInit();
             this.gbTotal.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +107,7 @@
             0,
             0,
             0});
-            this.numFloor.ValueChanged += new System.EventHandler(this.numFloor_ValueChanged);
+            this.numFloor.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // numRoomer
             // 
@@ -125,7 +125,7 @@
             0,
             0,
             0});
-            this.numRoomer.ValueChanged += new System.EventHandler(this.numRoomer_ValueChanged);
+            this.numRoomer.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // numSquare
             // 
@@ -182,7 +182,7 @@
             this.gbServices.Controls.Add(this.numGas);
             this.gbServices.Controls.Add(this.numColdW);
             this.gbServices.Controls.Add(this.numHotW);
-            this.gbServices.Controls.Add(this.numElecricity);
+            this.gbServices.Controls.Add(this.numElectricity);
             this.gbServices.Controls.Add(this.numHeating);
             this.gbServices.Controls.Add(this.cbHeating);
             this.gbServices.Controls.Add(this.cbGas);
@@ -221,7 +221,7 @@
             0,
             0,
             0});
-            this.numGas.ValueChanged += new System.EventHandler(this.numGas_ValueChanged);
+            this.numGas.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // numColdW
             // 
@@ -244,7 +244,7 @@
             0,
             0,
             0});
-            this.numColdW.ValueChanged += new System.EventHandler(this.numColdW_ValueChanged);
+            this.numColdW.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // numHotW
             // 
@@ -267,30 +267,30 @@
             0,
             0,
             0});
-            this.numHotW.ValueChanged += new System.EventHandler(this.numHotW_ValueChanged);
+            this.numHotW.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
-            // numElecricity
+            // numElectricity
             // 
-            this.numElecricity.Location = new System.Drawing.Point(114, 87);
-            this.numElecricity.Maximum = new decimal(new int[] {
+            this.numElectricity.Location = new System.Drawing.Point(114, 87);
+            this.numElectricity.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numElecricity.Minimum = new decimal(new int[] {
+            this.numElectricity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numElecricity.Name = "numElecricity";
-            this.numElecricity.Size = new System.Drawing.Size(80, 20);
-            this.numElecricity.TabIndex = 3;
-            this.numElecricity.Value = new decimal(new int[] {
+            this.numElectricity.Name = "numElectricity";
+            this.numElectricity.Size = new System.Drawing.Size(80, 20);
+            this.numElectricity.TabIndex = 3;
+            this.numElectricity.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numElecricity.ValueChanged += new System.EventHandler(this.numElecricity_ValueChanged);
+            this.numElectricity.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // numHeating
             // 
@@ -313,7 +313,7 @@
             0,
             0,
             0});
-            this.numHeating.ValueChanged += new System.EventHandler(this.numHeating_ValueChanged);
+            this.numHeating.ValueChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbHeating
             // 
@@ -324,7 +324,7 @@
             this.cbHeating.TabIndex = 11;
             this.cbHeating.Text = "Отопление";
             this.cbHeating.UseVisualStyleBackColor = true;
-            this.cbHeating.CheckedChanged += new System.EventHandler(this.cbHeating_CheckedChanged);
+            this.cbHeating.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbGas
             // 
@@ -335,7 +335,7 @@
             this.cbGas.TabIndex = 10;
             this.cbGas.Text = "Газ";
             this.cbGas.UseVisualStyleBackColor = true;
-            this.cbGas.CheckedChanged += new System.EventHandler(this.cbGas_CheckedChanged);
+            this.cbGas.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbColdW
             // 
@@ -346,7 +346,7 @@
             this.cbColdW.TabIndex = 9;
             this.cbColdW.Text = "Холодная вода";
             this.cbColdW.UseVisualStyleBackColor = true;
-            this.cbColdW.CheckedChanged += new System.EventHandler(this.cbColdW_CheckedChanged);
+            this.cbColdW.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbHotW
             // 
@@ -357,7 +357,7 @@
             this.cbHotW.TabIndex = 8;
             this.cbHotW.Text = "Горячая вода";
             this.cbHotW.UseVisualStyleBackColor = true;
-            this.cbHotW.CheckedChanged += new System.EventHandler(this.cbHotW_CheckedChanged);
+            this.cbHotW.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbElec
             // 
@@ -368,7 +368,7 @@
             this.cbElec.TabIndex = 7;
             this.cbElec.Text = "Электричество";
             this.cbElec.UseVisualStyleBackColor = true;
-            this.cbElec.CheckedChanged += new System.EventHandler(this.cbElec_CheckedChanged);
+            this.cbElec.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbLift
             // 
@@ -379,7 +379,7 @@
             this.cbLift.TabIndex = 6;
             this.cbLift.Text = "Лифт";
             this.cbLift.UseVisualStyleBackColor = true;
-            this.cbLift.CheckedChanged += new System.EventHandler(this.cbLift_CheckedChanged);
+            this.cbLift.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbClean
             // 
@@ -390,7 +390,7 @@
             this.cbClean.TabIndex = 5;
             this.cbClean.Text = "Уборка подъезда";
             this.cbClean.UseVisualStyleBackColor = true;
-            this.cbClean.CheckedChanged += new System.EventHandler(this.cbClean_CheckedChanged);
+            this.cbClean.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // cbOverhaul
             // 
@@ -401,7 +401,7 @@
             this.cbOverhaul.TabIndex = 4;
             this.cbOverhaul.Text = "Капитальный ремонт";
             this.cbOverhaul.UseVisualStyleBackColor = true;
-            this.cbOverhaul.CheckedChanged += new System.EventHandler(this.cbOverhaul_CheckedChanged);
+            this.cbOverhaul.CheckedChanged += new System.EventHandler(this.numSquare_ValueChanged);
             // 
             // lbCounters
             // 
@@ -428,6 +428,7 @@
             this.tbTotal.Location = new System.Drawing.Point(6, 18);
             this.tbTotal.Multiline = true;
             this.tbTotal.Name = "tbTotal";
+            this.tbTotal.ReadOnly = true;
             this.tbTotal.Size = new System.Drawing.Size(407, 294);
             this.tbTotal.TabIndex = 1;
             // 
@@ -465,7 +466,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColdW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHotW)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numElecricity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numElectricity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHeating)).EndInit();
             this.gbTotal.ResumeLayout(false);
             this.gbTotal.PerformLayout();
@@ -490,7 +491,7 @@
         private System.Windows.Forms.NumericUpDown numGas;
         private System.Windows.Forms.NumericUpDown numColdW;
         private System.Windows.Forms.NumericUpDown numHotW;
-        private System.Windows.Forms.NumericUpDown numElecricity;
+        private System.Windows.Forms.NumericUpDown numElectricity;
         private System.Windows.Forms.NumericUpDown numHeating;
         private System.Windows.Forms.CheckBox cbHeating;
         private System.Windows.Forms.CheckBox cbGas;
