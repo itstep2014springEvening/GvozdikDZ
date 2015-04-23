@@ -16,5 +16,15 @@ namespace Day7
         {
             InitializeComponent();
         }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            textBox1.Lines = Repository.AboutUser();
+        }
+
+        private void Form4_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Forms.form1.Close();
+        }
     }
 }

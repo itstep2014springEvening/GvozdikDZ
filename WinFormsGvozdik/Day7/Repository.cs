@@ -9,9 +9,12 @@ namespace Day7
     public static class Repository
     {
         static List<User> users;
+        static User tempUser;
+
         static Repository()
         {
             users = new List<User>();
+            users.Add(new User() { Login = "1", Pas = "1", Email = "1" });
         }
         public static bool AddNewUser(User user)
         {
@@ -77,6 +80,47 @@ namespace Day7
                 users.Remove(user);
                 return true;
             }
+        }
+        public static bool CheckUser(User user)
+        {
+            User userUC = users.FirstOrDefault(p => p.Login == user.Login);
+            if (userUC == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (userUC.Pas == user.Pas)
+                {
+                    tempUser = userUC;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool ChangePas(User user)
+        {
+            User userUP = users.FirstOrDefault(p => p.Email == user.Email);
+            if (userUP == null)
+            {
+                return false;
+            }
+            else
+            {
+                userUP.Pas = user.Pas;
+                return true;
+            }
+        }
+        public static string[] AboutUser()
+        {
+            string[] str = new string[3];
+            str[0] = String.Format("Логин: {0}", tempUser.Login);
+            str[1] = String.Format("E-mail: {0}", tempUser.Email);
+            str[2] = String.Format("Пароль: {0}", tempUser.Pas);
+            return str;
         }
     }
 

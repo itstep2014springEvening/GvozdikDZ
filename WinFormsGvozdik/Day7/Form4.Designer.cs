@@ -68,6 +68,7 @@
             this.textBox1.Location = new System.Drawing.Point(15, 84);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(220, 268);
             this.textBox1.TabIndex = 3;
             // 
@@ -82,6 +83,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Form4";
             this.Text = "Главное окно приложения";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4_FormClosing);
+            this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
